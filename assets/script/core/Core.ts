@@ -93,9 +93,9 @@ export class audioManager {
 
 }
 
-function saveToLocal(key, data: {}) {
+function saveToLocal(data: {}) {
     let json = JSON.stringify(data);
-    localStorage.setItem('gameData' + key, json);
+    localStorage.setItem('gameData', json);
 }
 function loadFromLocal(): {} {
     try {
@@ -140,6 +140,7 @@ export class Core {
         } else {
             //新用户
             console.log("新用户数据加载");
+            this.save();
         }
         this.playerData.loginTime = Date.now();
         console.log("玩家登录", this.playerData);
@@ -182,7 +183,8 @@ export class Core {
         parent.addChild(node);
         return node;
     }
+
     save() {
-        saveToLocal('gameData', this.playerData.getPackage());
+        saveToLocal(this.playerData.getPackage());
     }
 }

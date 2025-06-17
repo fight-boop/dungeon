@@ -16,6 +16,7 @@ export class StateView extends Component {
 
     protected onEnable(): void {
         Core.instance.event.on(EGameEvent.CHANGE_DATA, this.changePlayerData, this);
+        this.bindPlayerData();
     }
     protected onDisable(): void {
 
@@ -33,11 +34,10 @@ export class StateView extends Component {
     }
 
     bindPlayerData() {
-        let data = Core.instance.playerData;
-        this.labelAP.getComponentInChildren(Label)!.string = `${data.ap}`;
-        this.labelDP.getComponentInChildren(Label)!.string = `${data.dp}`;
-        this.labelHP.getComponentInChildren(Label)!.string = `${data.hp}`;
-        this.labelExp.getComponentInChildren(Label)!.string = `${data.exp}`;
+        this.labelAP.getComponentInChildren(Label)!.string = `${Core.instance.playerData.ap}`;
+        this.labelDP.getComponentInChildren(Label)!.string = `${Core.instance.playerData.dp}`;
+        this.labelHP.getComponentInChildren(Label)!.string = `${Core.instance.playerData.hp}`;
+        this.labelExp.getComponentInChildren(Label)!.string = `${Core.instance.playerData.exp}`;
     }
 
 }

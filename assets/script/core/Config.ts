@@ -11,6 +11,8 @@ export enum EPrefabName {
 
 export enum EGameEvent {
     CHANGE_DATA = "change_data",
+    GAME_START = "game_start",
+    GAME_END = "game_end",
 }
 
 export const EGameKey = "DungeonGame";
