@@ -23,6 +23,9 @@ export class Menu extends Component {
         console.log("Skill Button Clicked");
     }
     onTalentButtonClick() {
+        console.log("Talent Button Clicked1");
+
+        Core.instance.event.emit(EGameEvent.OPEN_TalentView);
         console.log("Talent Button Clicked");
     }
 }

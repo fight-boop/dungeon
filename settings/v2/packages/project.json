@@ -1,9 +1,12 @@
 {
-  "__version__": "1.0.4",
+  "__version__": "1.0.6",
   "general": {
     "designResolution": {
       "width": 852,
       "height": 375
     }
+  },
+  "script": {
+    "preserveSymlinks": true
   }
 }

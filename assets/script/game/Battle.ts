@@ -8,7 +8,8 @@ export class Battle extends Component {
     }
 
     update(deltaTime: number) {
-        
+
     }
 }
-
+
+
