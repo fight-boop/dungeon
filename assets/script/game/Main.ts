@@ -14,6 +14,11 @@ export class Main extends Component {
         Core.instance.event.on(EGameEvent.GAME_START, this.onStartGame, this);
         Core.instance.event.on(EGameEvent.GAME_END, this.onEndGame, this);
         this.onStartGame();
+        Core.instance.event.on(EGameEvent.GAME_SAVE, this.onGameSvae, this);
+
+
+        Core.instance.playerData.loginTime = Date.now();
+        Core.instance.event.emit(EGameEvent.GAME_SAVE);
     }
     protected onDisable(): void {
         Core.instance.event.off(EGameEvent.GAME_START, this.onStartGame, this);
@@ -37,6 +42,10 @@ export class Main extends Component {
 
     update(deltaTime: number) {
 
+    }
+
+    onGameSvae() {
+        Core.instance.save();
     }
 }
 

@@ -7,8 +7,6 @@ export class Start extends Component {
     start() {
         //TODO 
         Core.instance.init(() => {
-            Core.instance.playerData.loginTime = Date.now();
-            Core.instance.save();
             director.loadScene('Main');
         });
     }
