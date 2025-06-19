@@ -1,48 +1,49 @@
+import { utils } from "cc";
+import { Utils } from "../core/Utils";
+
 export enum ETalentType {
     POWER = 'power',
     DEFENSE = 'defense',
 }
-
+export class ETalentValue {
+    name: string;
+    description: string;
+}
 
 export class TalentData {
-    [ETalentType.POWER] = { name: 'Power Talent', description: 'Increases attack power.' };
-    [ETalentType.DEFENSE] = { name: 'Defense Talent', description: 'Increases defense power.' };
+    [ETalentType.POWER]: ETalentValue = { name: 'Power Talent', description: 'Increases attack power.' };
+    [ETalentType.DEFENSE]: ETalentValue = { name: 'Defense Talent', description: 'Increases defense power.' };
 }
 
 export class Talent {
-    id: number;
+    id: ETalentType;
     level: number;
-    constructor(id: number, level: number) {
+    constructor(id: ETalentType, level: number) {
         this.id = id;
         this.level = level;
     }
 
+    getData() {
+        return TalentData[this.id];
+    }
 }
 
 export class TalentManager {
-    private static _instance: TalentManager = null;
-    public static get instance(): TalentManager {
-        if (this._instance == null) {
-            this._instance = new TalentManager();
-        }
-        return this._instance;
-    }
-
     private _talents: Record<number, Talent> = {};
-
-    public addTalent(id: number, level: number): void {
-        if (!this._talents[id]) {
-            this._talents[id] = new Talent(id, level);
-        } else {
-            this._talents[id].level += level;
-        }
+    constructor() {
+        this._talents[ETalentType.DEFENSE] = new Talent(ETalentType.DEFENSE, 0);
+        this._talents[ETalentType.POWER] = new Talent(ETalentType.POWER, 0);
     }
 
-    public getTalent(id: number): Talent | null {
-        return this._talents[id] || null;
+    public getPackage(): Record<number, { id: ETalentType, level: number }> {
+        let data = {};
+        data[ETalentType.POWER] = this._talents[ETalentType.POWER].level;
+        data[ETalentType.DEFENSE] = this._talents[ETalentType.DEFENSE].level;
+        return data;
     }
 
-    public getAllTalents(): Record<number, Talent> {
-        return this._talents;
+    setPackage(data: {}) {
+        this._talents[ETalentType.DEFENSE].level = Utils.getSafeData(data[ETalentType.DEFENSE], 0);
+        this._talents[ETalentType.POWER].level = Utils.getSafeData(data[ETalentType.POWER], 0);
     }
 }

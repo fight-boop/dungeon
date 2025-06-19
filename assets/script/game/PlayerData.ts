@@ -1,3 +1,6 @@
+import { Utils } from "../core/Utils";
+import { TalentManager } from "./Talent";
+
 enum EDataKey {
     loginTime = "0",
     AP = "1",
@@ -5,12 +8,7 @@ enum EDataKey {
     HP = "3",
     MP = "4",
     EXP = "5",
-}
-function getSafeData<T>(data: T, defaultData: T): T {
-    if (data == null || data == undefined) {
-        return defaultData;
-    }
-    return data;
+    talent = "6",
 }
 export class PlayerData {
     loginTime: number = 0;
@@ -21,7 +19,7 @@ export class PlayerData {
     mp: number = 0; //魔法值
     exp: number = 0; //经验值
 
-
+    talent: TalentManager = new TalentManager();
     getPackage() {
         let data = {};
         data[EDataKey.loginTime] = this.loginTime;
@@ -30,6 +28,7 @@ export class PlayerData {
         data[EDataKey.HP] = this.hp;
         data[EDataKey.MP] = this.mp;
         data[EDataKey.EXP] = this.exp;
+        data[EDataKey.talent] = this.talent.getPackage();
         return data;
     }
 
@@ -38,11 +37,13 @@ export class PlayerData {
             return;
         }
 
-        this.loginTime = getSafeData(data[EDataKey.loginTime], 0);
-        this.ap = getSafeData(data[EDataKey.AP], 5);
-        this.dp = getSafeData(data[EDataKey.DP], 2);
-        this.hp = getSafeData(data[EDataKey.HP], 100);
-        this.mp = getSafeData(data[EDataKey.MP], 0);
+        this.loginTime = Utils.getSafeData(data[EDataKey.loginTime], 0);
+        this.ap = Utils.getSafeData(data[EDataKey.AP], 5);
+        this.dp = Utils.getSafeData(data[EDataKey.DP], 2);
+        this.hp = Utils.getSafeData(data[EDataKey.HP], 100);
+        this.mp = Utils.getSafeData(data[EDataKey.MP], 0);
+        this.exp = Utils.getSafeData(data[EDataKey.EXP], 0);
+        this.talent.setPackage(Utils.getSafeData<{}>(data[EDataKey.talent], {}));
     }
 }
 
