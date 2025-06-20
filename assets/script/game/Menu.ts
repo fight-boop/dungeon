@@ -5,8 +5,12 @@ const { ccclass, property } = _decorator;
 
 @ccclass('Menu')
 export class Menu extends Component {
+    @property(Node)
+    talentView: Node = null!;
+    protected onEnable(): void {
+        this.talentView.active = false;
+    }
     start() {
-
     }
 
     update(deltaTime: number) {
@@ -14,19 +18,14 @@ export class Menu extends Component {
     }
 
     onStartGameButtonClick() {
-        console.log("Start Game Button Clicked");
-        Core.instance.playerData.exp++;
-        Core.instance.event.emit(EGameEvent.CHANGE_DATA)
+        Core.instance.event.emit(EGameEvent.GAME_START);
     }
 
     onSkillButtonClick() {
         console.log("Skill Button Clicked");
     }
     onTalentButtonClick() {
-        console.log("Talent Button Clicked1");
-
-        Core.instance.event.emit(EGameEvent.OPEN_TalentView);
-        console.log("Talent Button Clicked");
+        this.talentView.active = true;
     }
 }
 

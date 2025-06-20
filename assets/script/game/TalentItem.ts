@@ -15,9 +15,17 @@ export class TalentItem extends Component {
     start() {
     }
     init(talent: Talent) {
+        if (!talent) {
+            return;
+        }
         this._talent = talent;
         this.nameLabel.getComponent(Label).string = talent.getData().name;
         this.descriptionLabel.getComponent(Label).string = talent.getData().description;
+    }
+
+    upgrade() {
+
+        this._talent.upgrade();
     }
 
     update(deltaTime: number) {

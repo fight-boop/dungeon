@@ -13,8 +13,8 @@ export class Main extends Component {
     protected onEnable(): void {
         Core.instance.event.on(EGameEvent.GAME_START, this.onStartGame, this);
         Core.instance.event.on(EGameEvent.GAME_END, this.onEndGame, this);
-        this.onStartGame();
-        Core.instance.event.on(EGameEvent.GAME_SAVE, this.onGameSvae, this);
+        this.onEndGame();
+        Core.instance.event.on(EGameEvent.GAME_SAVE, this.onGameSave, this);
 
 
         Core.instance.playerData.loginTime = Date.now();
@@ -30,13 +30,13 @@ export class Main extends Component {
 
     onStartGame() {
         //TODO
-        this.nodeMenu.active = true;
-        this.nodeBattle.active = false;
+        this.nodeMenu.active = false;
+        this.nodeBattle.active = true;
     }
     onEndGame() {
         //TODO
-        this.nodeMenu.active = false;
-        this.nodeBattle.active = true;
+        this.nodeMenu.active = true;
+        this.nodeBattle.active = false;
     }
 
 
@@ -44,7 +44,7 @@ export class Main extends Component {
 
     }
 
-    onGameSvae() {
+    onGameSave() {
         Core.instance.save();
     }
 }

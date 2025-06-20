@@ -8,5 +8,11 @@
   },
   "script": {
     "preserveSymlinks": true
-  }
+  },
+  "layer": [
+    {
+      "name": "Battle",
+      "value": 1
+    }
+  ]
 }

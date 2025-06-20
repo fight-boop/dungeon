@@ -3,6 +3,7 @@
     "__type__": "cc.Prefab",
     "_name": "Joystick",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "_native": "",
     "data": {
       "__id__": 1
@@ -28,10 +29,13 @@
     "_components": [
       {
         "__id__": 14
+      },
+      {
+        "__id__": 16
       }
     ],
     "_prefab": {
-      "__id__": 16
+      "__id__": 18
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -361,6 +365,30 @@
   {
     "__type__": "cc.CompPrefabInfo",
     "fileId": "f8LI1Y2TJEubCTfhMhF57P"
+  },
+  {
+    "__type__": "2b9bbcaKQZK3pczz3l6j6Q/",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 17
+    },
+    "Panel": {
+      "__id__": 2
+    },
+    "Handle": {
+      "__id__": 8
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "d8L4aeeVBENL1+7yuPXAVO"
   },
   {
     "__type__": "cc.PrefabInfo",

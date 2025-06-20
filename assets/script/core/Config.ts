@@ -15,6 +15,7 @@ export enum EGameEvent {
     GAME_END = "game_end",
     OPEN_TalentView = "open_talentView",
     GAME_SAVE = "game_save",
+    GAME_SHARK = "game_shark",
 }
 
 export const EGameKey = "DungeonGame";
