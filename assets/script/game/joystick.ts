@@ -15,6 +15,7 @@ export class joystick extends Component {
     private maxDistance: number = 0;
     private _UITransform: UITransform = null!;
     private _isTouching: boolean = false;
+    private _joy
     public get isTouching(): boolean {
         return this._isTouching;
     }
