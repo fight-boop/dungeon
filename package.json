@@ -2,7 +2,13 @@
   "name": "dungeonShooter",
   "uuid": "40e35bfc-da34-423e-beda-e00ddd3e97ea",
   "creator": {
-    "version": "3.8.7"
+    "version": "3.8.7",
+    "registry": {
+      "remote": {}
+    },
+    "dependencies": {
+      "plugin-import-2x": "1.1.10"
+    }
   },
   "description": "地牢射手"
 }
